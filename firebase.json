@@ -1,0 +1,33 @@
+{
+  "firebase": "drug-search",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+  "rewrites": [
+    {
+      "source": "/public/**",
+      "destination": "/public.html"
+    },
+    {
+      "source": "**",
+      "destination": "/index.html"
+    }
+  ],
+  "hosting": {
+    "public": "dist/drugs-search",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  
+  td:hover {
+    cursor: pointer ;
+   }
+   .mat-column-address {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 13% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-name {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 16% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-is_24 {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-date_update {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 12% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-work_today {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 11% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  agm-map {
+    position: relative;
+    height: 100%;
+    width: 85%;
+    left: 10%;
+}
+.map {
+  width: 100%;
+  min-height: 50vh;
+  height: 0;
+}
+ng-template{
+  height: 150%;
+  width: 200%;
+}

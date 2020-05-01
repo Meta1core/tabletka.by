@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Сервис для поиска лекарств</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item ">
+          <a class="nav-link" href="#">Главная страница</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link"  >Список лекарств</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link"  >Список аптек<span class="sr-only">(current)</span></a>
+          </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Быстрый поиск" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Поиск</button>
+      </form>
+    </div>
+  </nav>
+
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Карта</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form >
+        <div class = "map">
+          <agm-map [latitude]="location.latitude" [longitude]="location.longitude"  (mapClick)="sortByUserMark($event.coords.lat, $event.coords.lng, 'Ваша метка')" [zoom]="location.zoom">
+            <agm-marker *ngFor="let marker of location.markers" [latitude]="marker.lat" [longitude]="marker.lng"  (markerClick)="selectMarker($event)" [label]="marker.label"></agm-marker>
+        </agm-map>
+        <div>
+          Selected Marker is: Longitude {{selectedMarker.lat}} Latitude {{selectedMarker.lng}}
+      </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ок</button>
+    </div>
+  </ng-template>
+
+
+
+
+<table align="center" mat-table [dataSource]="dataSource" matSort  class="mat-elevation-z8">
+
+    <ng-container matColumnDef="apt_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>№</th>
+        <td #counter mat-cell  (click)="aboutPharmacy(element.name)" *matCellDef="let element"> {{element.apt_id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Название</th>
+        <td #name mat-cell (click)="aboutPharmacy(element.name)" *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Адрес <img width = "35" height="35" (click) = "openGM(content)" [src]="myImage" alt="image"></th>
+      <td mat-cell  (click)="aboutPharmacy(element.name)" *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Регион</th>
+        <td #counter mat-cell  (click)="aboutPharmacy(element.name)" *matCellDef="let element"> {{element.region}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phones">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Телефон</th>
+        <td #counter mat-cell (click)="aboutPharmacy(element.name)"  *matCellDef="let element"> {{element.phones}} </td>
+      </ng-container>
+      <ng-container matColumnDef="is_24">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Работает 24 часа в сутки?</th>
+        <td #counter mat-cell (click)="aboutPharmacy(element.name)" *matCellDef="let element"> <div *ngIf="element.is_24 == 0; else elseBlock">Нет</div> <ng-template #elseBlock>Да</ng-template></td>
+      </ng-container>
+      <ng-container matColumnDef="work_today">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>График работы сегодня</th>
+        <td mat-cell (click)="aboutPharmacy(element.name)" *matCellDef="let element"> {{element.work_today}} </td>
+      </ng-container>
+      <ng-container matColumnDef="price_list[0].price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Цена на препарат</th>
+        <td mat-cell (click)="aboutPharmacy(element.name)" *matCellDef="let element"> {{element.price_list[0].price}} </td>
+      </ng-container>
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell (click) = "sortAmount()" *matHeaderCellDef mat-sort-header>Остаток </th>
+        <td mat-cell (click)="aboutPharmacy(element.name)" *matCellDef="let element"> {{element.price_list[0].amount}} </td>
+      </ng-container>
+    <ng-container matColumnDef="date_update">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Время обновления </th>
+        <td mat-cell (click)="aboutPharmacy(element.name)" *matCellDef="let element"> {{element.date_update}} </td>
+      </ng-container>
+      <ng-container matColumnDef="distanceBetweenUser">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Расстояние до вас </th>
+        <td mat-cell (click)="aboutPharmacy(element.name)" *matCellDef="let element"> {{element.distanceBetweenUser}} </td>
+      </ng-container>
+       
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

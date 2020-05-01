@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Сервис для поиска лекарств</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item ">
+          <a class="nav-link" href="#">Главная страница</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link"  >Список лекарств</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Быстрый поиск" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Поиск</button>
+      </form>
+    </div>
+  </nav>
+<table align="center" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="ls_num">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>№</th>
+        <td #counter mat-cell (click)="findPharmacy(element.ls_num)" *matCellDef="let element"> {{element.ls_num}} </td>
+      </ng-container>
+
+    <ng-container matColumnDef="ls_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Название </th>
+      <td mat-cell (click)="findPharmacy(element.ls_num)" *matCellDef="let element"> {{element.ls_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tar_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Форма выпуска </th>
+        <td mat-cell (click)="findPharmacy(element.ls_num)" *matCellDef="let element"> {{element.tar_name}} </td>
+      </ng-container>
+      
+    <ng-container matColumnDef="firm_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Фирма производитель </th>
+        <td mat-cell (click)="findPharmacy(element.ls_num)" *matCellDef="let element"> {{element.firm_name}} </td>
+      </ng-container>
+      
+    <ng-container matColumnDef="country_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Страна производства </th>
+      <td mat-cell (click)="findPharmacy(element.ls_num)" *matCellDef="let element"> {{element.country_name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="otc_rx">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> По рецепту/без рецепта </th>
+        <td mat-cell (click)="findPharmacy(element.ls_num)" *matCellDef="let element"> {{element.otc_rx}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nlec_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> МНН</th>
+        <td mat-cell (click)="findPharmacy(element.ls_num)" *matCellDef="let element"> {{element.nlec_name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price_min">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Минимальная цена в аптеках </th>
+        <td mat-cell (click)="findPharmacy(element.ls_num)"  *matCellDef="let element"> {{element.price_min}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price_max">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Максимальная цена в аптеках </th>
+        <td mat-cell (click)="findPharmacy(element.ls_num)" *matCellDef="let element"> {{element.price_max}} </td>
+      </ng-container>
+
+    <ng-container matColumnDef="apt_cnt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Количество аптек, где есть ЛС </th>
+      <td mat-cell (click)="findPharmacy(element.ls_num)" *matCellDef="let element"> {{element.apt_cnt}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

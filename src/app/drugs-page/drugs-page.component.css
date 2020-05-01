@@ -1,0 +1,142 @@
+table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  
+  td:hover {
+    cursor: pointer ;
+   }
+   .mat-column-ls_num {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 5% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-tar_name {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 11% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-apt_cnt {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 8% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-ls_name {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-otc_rx {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 5% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  
+  .mat-column-price_min {
+    width: 1% !important;
+  }
+  .mat-column-price_max {
+    width: 1% !important;
+  }
+  .mat-column-country_name {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 8% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-nlec_name {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 8% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-firm_name {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 13% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  mat-header-cell {
+    display:flex;
+    justify-content:flex-end;
+   }

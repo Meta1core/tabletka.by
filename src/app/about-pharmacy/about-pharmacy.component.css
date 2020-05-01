@@ -1,0 +1,37 @@
+.column1{
+    position: relative;
+    left: 15%;
+    top: 18%;
+}
+.column2{
+    position: relative;
+    bottom: 260px;
+    left: 15%;
+}
+.example-full-width{
+    width: 10%;
+}
+input{
+    width: 350px;
+}
+.map {
+    width: 100%;
+    min-height: 50vh;
+    height: 0;
+}
+mat-card{
+    height: 75%;
+}
+    agm-map {
+    position: relative;
+    height: 110%;
+    width: 45%;
+    left: 44%;
+    bottom:575px;
+}
+.header{
+    padding-top: 1%;
+}
+#graph{
+    padding-top: 15px;
+}

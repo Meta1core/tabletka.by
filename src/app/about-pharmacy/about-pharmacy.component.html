@@ -1,0 +1,109 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Сервис для поиска лекарств</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item ">
+          <a class="nav-link" href="#">Главная страница</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link"  >Список лекарств</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  >Список аптек</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link">{{name}}<span class="sr-only">(current)</span></a>
+          </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Быстрый поиск" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Поиск</button>
+      </form>
+    </div>
+  </nav>
+
+<div class = "header">
+  <h1 align = "center" *ngIf="(pharmacy[0].is_open == 1); else elseBlock"> Страница аптеки: "{{name }}"  <span
+    class="badge badge-success"> Аптека открыта</span></h1>
+<ng-template #elseBlock>
+<h1 align = "center">Страница аптеки: "{{name }}"<span class="badge badge-danger"> Аптека закрыта</span></h1>
+</ng-template>
+</div>
+
+  <mat-card>
+<div class = "column1">
+          <div>
+    <mat-form-field class="example-full-width">
+        <mat-label>Адрес</mat-label>
+        <input readonly matInput placeholder="Адрес" type = "text" [value]="pharmacy[0].address">
+      </mat-form-field>
+        </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Регион</mat-label>
+        <input readonly matInput placeholder="Регион" type = "text" [value]="pharmacy[0].region">
+      </mat-form-field>
+    </div>
+    <div>
+      <span>Мобильный телефон:</span><a [href]="'tel:' + pharmacy[0].phones"> {{pharmacy[0].phones}}</a>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width" id = "graph">
+        <mat-label>График работы сегодня</mat-label>
+        <input readonly matInput placeholder="График работы сегодня" type = "text" [value]="pharmacy[0].work_today">
+      </mat-form-field>
+    </div>
+    <div class = "column2">
+        <div>
+  <mat-form-field class="example-full-width">
+      <mat-label>Понедельник</mat-label>
+      <input readonly matInput placeholder="Адрес" type = "text" [value]="pharmacy[0].work1">
+    </mat-form-field>
+      </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Вторник</mat-label>
+      <input readonly matInput placeholder="Регион" type = "text" [value]="pharmacy[0].work2">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Среда</mat-label>
+      <input readonly matInput placeholder="Телефон" type = "text" [value]="pharmacy[0].work3">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Четверг</mat-label>
+      <input readonly matInput placeholder="График работы сегодня" type = "text" [value]="pharmacy[0].work4">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Пятница</mat-label>
+      <input readonly matInput placeholder="График работы сегодня" type = "text" [value]="pharmacy[0].work5">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Суббота</mat-label>
+      <input readonly matInput placeholder="График работы сегодня" type = "text" [value]="pharmacy[0].work6">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Воскресенье</mat-label>
+      <input readonly matInput placeholder="График работы сегодня" type = "text" [value]="pharmacy[0].work7">
+    </mat-form-field>
+  </div>
+  </div>
+</div>
+<div class="map">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="15">
+        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+</div>
+</mat-card>

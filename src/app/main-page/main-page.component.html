@@ -1,0 +1,33 @@
+<mat-form>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Сервис для поиска лекарств</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Главная страница<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Быстрый поиск" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Поиск</button>
+      </form>
+    </div>
+  </nav>
+  <div class="wrap">
+   <div class="search">
+      <input #searchField type="text" class="searchTerm" placeholder="Наименование лекарства">
+     <div (click)="findDrugs(searchField.value, selectRegion.value)"><button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+    </div> 
+     <div class="form-group col-md-4" id = "dropdown">
+      <select #selectRegion class="form-control" data-live-search="true">
+      <option *ngFor="let region of regions" value={{region.reg_num}}> {{region.region}} </option>
+    </select>
+      </div>
+   </div>
+</div>
+</mat-form>

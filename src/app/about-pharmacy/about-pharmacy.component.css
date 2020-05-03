@@ -35,3 +35,31 @@ mat-card{
 #graph{
     padding-top: 15px;
 }
+@media screen and (max-device-width: 768px){
+    nav{
+        width: 120%;
+    }
+    mat-card{
+        height: 100%;
+        width: 120%;
+    }
+    agm-map {
+        position: relative;
+        height: 70%;
+        width: 55%;
+        left: 0%;
+        bottom:370px;
+    }
+    .column1{
+        position: relative;
+        left: 2%;
+        top: 3%;
+        width: 1150px;
+    }
+    .column2{
+        position: relative;
+        width: 950px;
+        bottom: 250px;
+        left: 22%;
+    }
+  }

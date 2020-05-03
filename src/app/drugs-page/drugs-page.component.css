@@ -140,3 +140,12 @@ table {
     display:flex;
     justify-content:flex-end;
    }
+   @media screen and (max-device-width: 768px){
+    table {
+      width: 400%;
+      height: 350px;
+    }
+    nav{
+      width: 400%;
+    }
+  }

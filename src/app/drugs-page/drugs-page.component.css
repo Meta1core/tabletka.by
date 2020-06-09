@@ -1,151 +1,97 @@
-table {
-    width: 100%;
+  mat-card{
+    height: auto;
+    background-image: url('https://ae01.alicdn.com/kf/Hbad27de687ab4651a900b7b1b5828204j/-.jpg_q50.jpg');
+    border-radius: 15px;   
   }
-  
-  th.mat-sort-header-sorted {
-    color: black;
+  #nav{
+    border-radius: 10px;   
   }
-  
-  td:hover {
-    cursor: pointer ;
-   }
-   .mat-column-ls_num {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 28% !important;
-    width: 5% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+.list{
+  margin-left: 0px;
   }
-  .mat-column-tar_name {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 28% !important;
-    width: 11% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+  mat-list-item{
+    display: inline-block;
+    padding: 10px;
   }
-  .mat-column-apt_cnt {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 10% !important;
-    width: 8% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-  .mat-column-ls_name {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 28% !important;
-    width: 10% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-  .mat-column-otc_rx {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 28% !important;
-    width: 5% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-  
-  .mat-column-price_min {
-    width: 1% !important;
-  }
-  .mat-column-price_max {
-    width: 1% !important;
-  }
-  .mat-column-country_name {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 10% !important;
-    width: 8% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-  .mat-column-nlec_name {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 10% !important;
-    width: 8% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-  .mat-column-firm_name {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 10% !important;
-    width: 13% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-  mat-header-cell {
-    display:flex;
-    justify-content:flex-end;
-   }
-   @media screen and (max-device-width: 768px){
-    table {
-      width: 400%;
-      height: 350px;
+  @media (min-width: 1199px) {
+    mat-list-item{
+      margin: 0.25em auto;
+      vertical-align: top;
+      display: inline-block;
+      width: 20.3333%;
     }
-    nav{
-      width: 400%;
-    }
+    .list{
+      margin-left: 180px;
+      }
+   }
+  .card-body h5{
+    font-size: 15px;
   }
+
+  .card-body h6{
+    font-size: 12px;
+  }
+
+  .drug-price{
+
+    color:red;
+    font-size: 15px;
+  }
+  .card-body button{
+    width: 100px;
+    height: 39px;
+  }
+
+
+
+  @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+
+
+.search > div {
+  display: inline-block;
+  position: relative;
+}
+
+.search > div:after {
+  content: "";
+  background: white;
+  width: 4px;
+  height: 20px;
+  position: absolute;
+  top: 40px;
+  right: 2px;
+  transform: rotate(135deg);
+  box-shadow: 1px 0 #0091c2;
+}
+
+.search > div > input {
+  color: white;
+  font-size: 16px;
+  background: transparent;
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+  border: solid 1px white;
+  outline: none;
+  border-radius: 35px;
+  box-shadow: 0 1px #0091c2;
+  transition: width 0.5s;
+}
+
+.search > div > input::placeholder {
+  color: #efefef;
+  opacity: 1;
+}
+
+.search > div > input::-ms-placeholder {
+  color: #efefef;
+}
+
+.search > div > input::-ms-input-placeholder {
+  color: #efefef;
+}
+
+.search > div > input:focus,
+.search > div > input:valid {
+  width: 250px;
+}

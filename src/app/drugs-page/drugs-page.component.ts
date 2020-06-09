@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
 import { DrugsService } from '../drugs.service';
 import {MatSort} from '@angular/material/sort';
@@ -21,14 +21,15 @@ export class DrugsPageComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => { 
-       this.drugName = params.get('drugName'); 
-       this.region = params.get('region'); 
+    this.route.paramMap.subscribe(params => {
+       this.drugName = params.get('drugName');
+       this.region = params.get('region');
        console.clear();
        this.getDrugs();
        this.dataSource.sort = this.sort;
    });
   }
+
 
   getDrugs(){
     this.drugsService.getDrugs(this.drugName, this.region)
@@ -44,4 +45,5 @@ export class DrugsPageComponent implements OnInit {
   findPharmacy(ls_num:number){
     this.router.navigate(['/pharmacy-page', ls_num, this.region]);
   }
+
 }

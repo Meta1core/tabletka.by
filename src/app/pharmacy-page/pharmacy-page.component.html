@@ -1,28 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav id = "nav" class="navbar navbar-expand-lg navbar-dark bg-primary">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Сервис для поиска лекарств</a>
+    <span><a class="navbar-brand" href="#">Tabletka</a></span>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item ">
           <a class="nav-link" href="#">Главная страница</a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item">
           <a class="nav-link"  >Список лекарств</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link"  >Список аптек<span class="sr-only">(current)</span></a>
-          </li>
+          <a class="nav-link"  >Список аптек<span class="sr-only">(current)</span></a>
+        </li>
+        <img width = "35" height="35" (click) = "openGM(content)" [src]="myImage" alt="image">
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Быстрый поиск" aria-label="Search">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Поиск</button>
-      </form>
+      <div class="flexbox">
+        <div class="search">
+          <div>
+            <input type="text" placeholder="       Быстрый поиск. . ." required>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
-
-
 
   <ng-template #content let-modal>
     <div class="modal-header">
@@ -37,9 +39,9 @@
           <agm-map [latitude]="location.latitude" [longitude]="location.longitude"  (mapClick)="sortByUserMark($event.coords.lat, $event.coords.lng, 'Ваша метка')" [zoom]="location.zoom">
             <agm-marker *ngFor="let marker of location.markers" [latitude]="marker.lat" [longitude]="marker.lng"  (markerClick)="selectMarker($event)" [label]="marker.label"></agm-marker>
         </agm-map>
-        <div>
+        <!-- <div>
           Selected Marker is: Longitude {{selectedMarker.lat}} Latitude {{selectedMarker.lng}}
-      </div>
+      </div> -->
         </div>
       </form>
     </div>
@@ -49,9 +51,40 @@
   </ng-template>
 
 
+  <mat-card>
+    <mat-form-field id = "mat-slct">
+      <mat-label>Выберите сортировку/фильтрацию</mat-label>
+      <mat-select matNativeControl matSelect>
+        <mat-option (click) = "sortByCoords()" value="option1">Сортировка по местоположению  <img (click) = "sortByCoords()" width = "25px" height = "25px" src ="https://pngfon.ru/wp-content/gallery/geolokacziya-krasnyj/3.png"></mat-option>
+        <mat-option (click) = "sortByPrice()" value="option2">Сортировка по цене</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-checkbox (click) = "sortAmount()" class="checkBox" [(ngModel)]="checked">Убрать аптеки, где препарата нет</mat-checkbox>
+    <mat-card-content>
+      <div class="list">
+        <mat-list>
+          <mat-list-item *ngFor="let pharmacy of pharmacys ">
+            <div class="card" style="width: 21rem; height: 17rem;">
+              <div class="card-body">
+                <h5 class="card-title">{{pharmacy.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{pharmacy.address}}</h6>
+                <p class="card-text">
+                  Город: {{pharmacy.region}}<br>
+                  Расстояние до вас: {{pharmacy.distanceBetweenUser}}<br>
+                  Цена на препарат: <span style="color: red">{{pharmacy.price_list[0].price}}</span><br>
+                  Остаток на складе: {{pharmacy.price_list[0].amount}}<br>
+                  <div *ngIf="pharmacy.is_24 == 0; else elseBlock"><span style="color: green">Работает 24/7</span></div> <ng-template #elseBlock><span style="color: red">Не работает 24/7<br></span></ng-template>
+                <button (click) = "aboutPharmacy(pharmacy.name)" type="button" class="btn btn-outline-primary">Выбрать</button>
+              </div>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card-content>
+  </mat-card>  
 
 
-<table align="center" mat-table [dataSource]="dataSource" matSort  class="mat-elevation-z8">
+<!-- <table align="center" mat-table [dataSource]="dataSource" matSort  class="mat-elevation-z8">
 
     <ng-container matColumnDef="apt_id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>№</th>
@@ -104,4 +137,4 @@
        
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  </table> -->

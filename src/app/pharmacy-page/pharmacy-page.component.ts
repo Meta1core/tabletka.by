@@ -26,7 +26,8 @@ export interface PeriodicElement {
   styleUrls: ['./pharmacy-page.component.css']
 })
 export class PharmacyPageComponent implements OnInit {
-  
+  checked = false;
+
   location: Location;
   selectedMarker: Marker;
 
@@ -133,9 +134,11 @@ sortByUserMark(lat: number, lng: number, label:string){
   };
   item.distanceBetweenUser = (this.calculateDistance(this.usermarkgeolocation, this.pharmacygeolocation));
   }
+  this.sortByCoords();
 }
 
 sortAmount(){
+  if(this.checked == false){
   if(this.sorted_amount == false){
   this.drugsService.findPharmacy(this.ls_num, this.region)
   .subscribe(data => {
@@ -161,6 +164,10 @@ sortAmount(){
   else{
     this.findPharmacys();
   }
+}
+else{
+  this.findPharmacys();
+}
 }
   
 fillDistances(){
@@ -206,7 +213,6 @@ selectMarker(event) {
         }
       }
     }
-    this.findPharmacys();
 }
 
 addMarker(lat: number, lng: number, label:string) {
@@ -275,6 +281,18 @@ addMarker(lat: number, lng: number, label:string) {
       console.log(data);
     }, error => console.log(error));
     this.router.navigate(['/about-pharmacy',this.ls_num, this.region, name]);
+  }
+
+  sortByCoords(){
+    this.pharmacys.sort(function (a, b) {
+      return a.distanceBetweenUser - b.distanceBetweenUser;
+    });
+  }
+
+  sortByPrice(){
+    this.pharmacys.sort(function (a, b) {
+      return a.price_list[0].price - b.price_list[0].price
+    });
   }
 }
 

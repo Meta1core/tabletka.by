@@ -20,6 +20,9 @@ import {FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { AgmCoreModule } from '@agm/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,9 +43,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatTableModule,
     MatPaginatorModule,
     MatCardModule,
+    MatSelectModule,
+    MatSidenavModule,
     FormsModule,
     GoogleMapsModule,
     MatDatepickerModule,
+    MatCheckboxModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCyNAvCTUuhfABvIyZBPQSB8984tJkCZwA",
       libraries: ["places", "geometry"]

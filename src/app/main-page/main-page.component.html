@@ -57,7 +57,7 @@
             <div class="input-wrap second">
               <div class="input-field second">
                 <label>РЕГИОН</label>
-                <mat-select #selectRegion  >
+                <mat-select #selectRegion value="0"  >
                   <mat-option *ngFor="let region of regions" value={{region.reg_num}}> {{region.region}} </mat-option>
                 </mat-select>
               </div>

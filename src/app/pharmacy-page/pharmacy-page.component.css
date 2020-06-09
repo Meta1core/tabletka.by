@@ -1,12 +1,12 @@
 
 mat-card{
   height: auto;
-  background-image: url('https://ae01.alicdn.com/kf/Hbad27de687ab4651a900b7b1b5828204j/-.jpg_q50.jpg');
-  border-radius: 15px;   
+  background: url("../main-page/Searchs_013.png");
+  background-size: cover;
+  background-position: center center;
 }
-
-#nav{
-  border-radius: 10px;   
+mat-checkbox, mat-label{
+  color: white;
 }
 .list{
 margin-left: 0px;

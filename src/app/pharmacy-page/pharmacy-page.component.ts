@@ -39,6 +39,7 @@ export class PharmacyPageComponent implements OnInit {
 
   ls_num;
   region;
+  regions:Array<any>;
   pharmacys:Array<any>;
   sorted_amount: boolean = false;
   distances:Array<any> = [];
@@ -229,7 +230,7 @@ addMarker(lat: number, lng: number, label:string) {
       this.addMarker(
         position.coords.latitude,
         position.coords.longitude,
-        "Your current position"
+        "Вы находитесь здесь!"
       )
     });
     } else {
@@ -293,6 +294,18 @@ addMarker(lat: number, lng: number, label:string) {
     this.pharmacys.sort(function (a, b) {
       return a.price_list[0].price - b.price_list[0].price
     });
+  }
+
+  fillSelect(){
+    this.drugsService.getRegions()
+    .subscribe(data => {
+      this.regions = data;
+      console.log(data);
+    }, error => console.log(error));
+  }
+
+  findDrugs(drugName: string, region:number){
+    this.router.navigate(['/drugs-page', drugName, region])
   }
 }
 

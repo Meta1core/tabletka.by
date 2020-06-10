@@ -1,6 +1,6 @@
 
 mat-card{
-  height: auto;
+  height: 500%;
   background: url("../main-page/Searchs_013.png");
   background-size: cover;
   background-position: center center;
@@ -8,22 +8,14 @@ mat-card{
 mat-checkbox, mat-label{
   color: white;
 }
-.list{
-margin-left: 0px;
-}
 mat-list-item{
   display: inline-block;
   padding: 10px;
 }
-@media (min-width: 1199px) {
-  mat-checkbox{
-    margin-left: 30px;
-  }
-  #mat-slct{
-    margin-left: 300px;
-  }
+ @media (min-width: 1299px) {
   mat-list-item{
     margin: 0.25em auto;
+    margin-right: 110px;
     vertical-align: top;
     display: inline-block;
     width: 20.3333%;
@@ -32,6 +24,9 @@ mat-list-item{
     margin-left: 180px;
     }
  }
+
+
+
 .card-body h5{
   font-size: 15px;
 }
@@ -50,16 +45,11 @@ mat-list-item{
   height: 39px;
 }
 
-
-
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
-
-
 .search > div {
 display: inline-block;
 position: relative;
 }
-
 .search > div:after {
 content: "";
 background: white;

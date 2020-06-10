@@ -11,6 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class DrugsPageComponent implements OnInit {
   drugName;
+  regions:Array<any>;
   region;
   drugs:Array<any>;
   dataSource = new MatTableDataSource(this.drugs);
@@ -46,4 +47,15 @@ export class DrugsPageComponent implements OnInit {
     this.router.navigate(['/pharmacy-page', ls_num, this.region]);
   }
 
+  fillSelect(){
+    this.drugsService.getRegions()
+    .subscribe(data => {
+      this.regions = data;
+      console.log(data);
+    }, error => console.log(error));
+  }
+  
+  findDrugs(drugName: string, region:number){
+    this.router.navigate(['/drugs-page', drugName, region])
+  }
 }

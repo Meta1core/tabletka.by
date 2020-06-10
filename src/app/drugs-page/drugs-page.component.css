@@ -1,29 +1,27 @@
   mat-card{
-    height: auto;
-    background: url("../main-page/Searchs_013.png");
-    background-repeat: repeat-y;
-    background-size: cover;
-    background-position: center center;
-  }
-.list{
-  margin-left: 0px;
+    background: url("../main-page/Searchs_013.png") no-repeat center;
+    background-size: 100% 100%;
+    background-position: top center;
+    width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 300%;
   }
   mat-list-item{
     display: inline-block;
     padding: 10px;
   }
-  @media (min-width: 1199px) {
+  @media (min-width: 1300px) {
     mat-list-item{
       margin: 0.25em auto;
-      margin-right: 60px;
+      margin-right: 110px;
       vertical-align: top;
       display: inline-block;
       width: 20.3333%;
     }
     .list{
-      margin-left: 180px;
+      margin-left: 220px;
       }
    }
+  
   .card-body h5{
     font-size: 15px;
   }
@@ -42,6 +40,14 @@
     height: 39px;
   }
 
+  .wrn-btn{
+    width: 50%;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: capitalize;
+     height: calc(2rem + 5px) !important;
+     border-radius:5px;
+}
 
 
   @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");

@@ -12,13 +12,17 @@
           <a class="nav-link"  >Список лекарств</a>
         </li>
       </ul>
-      <div class="flexbox">
-        <div class="search">
-          <div>
-            <input type="text" placeholder="       Быстрый поиск. . ." required>
-          </div>
-        </div>
+      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+        <input #drugInput type="text" (click) = "fillSelect()" class="form-control search-slt" placeholder="Введите препарат...">
       </div>
+      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+        <mat-select #regionSelector (click) = "fillSelect()" class="form-control search-slt" id="exampleFormControlSelect1" value = "0">
+          <mat-option *ngFor="let region of regions" value={{region.reg_num}}> {{region.region}} </mat-option>
+        </mat-select>
+      </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+      <button (click) = "findDrugs(drugInput.value, regionSelector.value)" id = "searchButton" type="button" class="btn btn-info wrn-btn">Поиск</button>
+    </div>
     </div>
   </nav>
   

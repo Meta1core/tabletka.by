@@ -4,6 +4,9 @@ body{
   background: #f2f2f2;
   font-family: 'Open Sans', sans-serif;
 }
+mat-form-field{
+  margin: -10px;
+}
 .search {
   width: 100%;
   position: relative;

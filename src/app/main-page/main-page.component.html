@@ -56,14 +56,19 @@
             </div>
             <div class="input-wrap second">
               <div class="input-field second">
+              <mat-form-field>
                 <label>РЕГИОН</label>
-                <mat-select #selectRegion value="0"  >
-                  <mat-option *ngFor="let region of regions" value={{region.reg_num}}> {{region.region}} </mat-option>
+                <mat-select [formControl]="bankCtrl"  #singleSelect    >
+                  <mat-option>
+                    <ngx-mat-select-search value="0" (keyup) = "test(ngx.value)" #ngx placeholderLabel="Поиск региона..." noEntriesFoundLabel="'не найдено'" [formControl]="bankFilterCtrl" ngxMatSelectSearchClear></ngx-mat-select-search>
+                  </mat-option>
+                  <mat-option #matSelect *ngFor="let region of regions" value={{region.reg_num}}> {{region.region}} </mat-option>
                 </mat-select>
+              </mat-form-field>
               </div>
             </div>
           </div>
-          <button (click)="findDrugs(searchField.value, selectRegion.value)" class="btn-search" type="button">Поиск</button>
+          <button (click)="findDrugs(searchField.value, singleSelect.value)" class="btn-search" type="button">Поиск</button>
         </div>
       </form>
     </div>

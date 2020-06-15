@@ -24,13 +24,13 @@ export class MainPageComponent implements OnInit, AfterViewInit, OnDestroy {
   public filteredBanks: ReplaySubject<Bank[]> = new ReplaySubject<Bank[]>(1);
   @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
   protected _onDestroy = new Subject<void>();
-
+  reload: boolean = false;
 
   constructor( private drugsService: DrugsService,  public route: ActivatedRoute, public router: Router) { }
 
   ngOnInit(): void {
     this.getTest();
-
+    this.reloadPage();
     this.bankCtrl.setValue(this.regions[10]);
     // load the initial bank list
     // listen for search field value changes
@@ -41,7 +41,12 @@ export class MainPageComponent implements OnInit, AfterViewInit, OnDestroy {
       });
 
   }
-
+  reloadPage(){
+    if(localStorage.getItem("reloaded") == null){
+      localStorage.setItem("reloaded", "true");
+      window.location.reload();
+    }
+  }
   ngAfterViewInit() {
     this.setInitialValue();
   }

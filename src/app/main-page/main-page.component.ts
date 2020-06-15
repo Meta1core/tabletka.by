@@ -13,8 +13,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit, AfterViewInit, OnDestroy {
-
+  @ViewChild('searchField') searchField: ElementRef;
+  defaultValue = 'domain';
   public regions:Array<any>;
+  public drugs:Array<any>;
   public filteredRegions:Array<any>;
 
   public bankCtrl: FormControl = new FormControl();
@@ -119,9 +121,21 @@ test(searchRegion: string){
 
 
 
+  clearAltVariants(){
+    this.drugs = [];
+  }
+  setSearchedDrug(value){
+    this.searchField.nativeElement.value = value;
+    this.drugs = [];
+  }
 
-
-
+  fillDrugs(value){
+    this.drugsService.getDrugs(value, 0)
+    .subscribe(data => {
+      this.drugs = data[0].class;
+      console.log(this.drugs);
+    }, error => console.log(error));
+  }
 
   getTest(){
     this.drugsService.getRegions()
@@ -134,6 +148,7 @@ test(searchRegion: string){
       })
       console.log(data);
     }, error => console.log(error));
+
   }
 
   naturalCompare(a, b) {

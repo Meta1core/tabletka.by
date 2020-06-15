@@ -21,9 +21,9 @@
         </mat-select>
       </div>
     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-      <button (click) = "findDrugs(drugInput.value, regionSelector.value)" id = "searchButton" type="button" class="btn btn-info wrn-btn">Поиск</button>
+      <button #btnSearch (click) = "findDrugs(drugInput.value, regionSelector.value)" id = "searchButton" type="button" class="btn btn-info wrn-btn">Поиск</button>
     </div>
-    </div>
+  </div>
   </nav>
   
 <mat-card>

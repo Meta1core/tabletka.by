@@ -44,6 +44,7 @@ export class PharmacyPageComponent implements OnInit {
   sorted_amount: boolean = false;
   distances:Array<any> = [];
   dataSource;
+  regionNumber;
   myImage = "./assets/pictures/gmap.jpg";
   closeResult = '';
   mapType: "satelite";
@@ -58,6 +59,7 @@ export class PharmacyPageComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   ngOnInit(): void {
+    this.regionNumber = localStorage.getItem("regionValue");
     console.clear();
     this.selectedMarker = {
       lat: 53.4184231,

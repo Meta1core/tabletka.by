@@ -20,7 +20,7 @@
         <input #drugInput type="text" (click) = "fillSelect()" class="form-control search-slt" placeholder="Введите препарат...">
       </div>
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <mat-select #regionSelector (click) = "fillSelect()" class="form-control search-slt" id="exampleFormControlSelect1" value = "0">
+        <mat-select #regionSelector (click) = "fillSelect()" class="form-control search-slt" id="exampleFormControlSelect1" [value] = "regionNumber">
           <mat-option *ngFor="let region of regions" value={{region.reg_num}}> {{region.region}} </mat-option>
         </mat-select>
       </div>

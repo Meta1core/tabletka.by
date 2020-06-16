@@ -11,6 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class DrugsPageComponent implements OnInit {
   drugName;
+  regionNumber;
   regions:Array<any>;
   region;
   drugs:Array<any>;
@@ -29,6 +30,7 @@ export class DrugsPageComponent implements OnInit {
        this.getDrugs();
        this.dataSource.sort = this.sort;
    });
+   this.regionNumber = localStorage.getItem("regionValue");
   }
 
 

@@ -7,6 +7,10 @@ import { take, takeUntil } from 'rxjs/operators';
 import { DrugsService } from '../drugs.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
+import {} from "googlemaps";
+import { element } from 'protractor';
+declare var google: any;
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -19,6 +23,16 @@ export class MainPageComponent implements OnInit, AfterViewInit, OnDestroy {
   public drugs:Array<any>;
   public filteredRegions:Array<any>;
 
+
+  public regionId : Number;
+
+
+  public modelRegion: Bank;
+
+  public userRegion;public userReg_num;
+
+  public lat: any; lng: any;
+  public currentCity : String;
   public bankCtrl: FormControl = new FormControl();
   public bankFilterCtrl: FormControl = new FormControl();
   public filteredBanks: ReplaySubject<Bank[]> = new ReplaySubject<Bank[]>(1);
@@ -29,24 +43,17 @@ export class MainPageComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor( private drugsService: DrugsService,  public route: ActivatedRoute, public router: Router) { }
 
   ngOnInit(): void {
-    this.getTest();
+    this.sortRegions();
     this.reloadPage();
-    this.bankCtrl.setValue(this.regions[10]);
-    // load the initial bank list
-    // listen for search field value changes
-    this.bankFilterCtrl.valueChanges
-      .pipe(takeUntil(this._onDestroy))
-      .subscribe(() => {
-        this.filterBanks();
-      });
-
   }
+
   reloadPage(){
     if(localStorage.getItem("reloaded") == null){
       localStorage.setItem("reloaded", "true");
       window.location.reload();
     }
   }
+
   ngAfterViewInit() {
     this.setInitialValue();
   }
@@ -92,12 +99,69 @@ export class MainPageComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
 test(searchRegion: string){
-  if(searchRegion == "") this.getTest();
+  if(searchRegion == "") this.sortRegions();
   this.regions = this.filteredRegions = this.regions.filter(
     item => item.region.toLowerCase().includes(searchRegion.toLowerCase()));
     console.log(this.filteredRegions);
   }
 
+  getCity(){
+    navigator.geolocation.getCurrentPosition((position)=>{
+      var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+      new google.maps.Geocoder().geocode({'latLng' : latlng},(results, status) => {
+       if (status == google.maps.GeocoderStatus.OK) {
+           if (results[1]) {
+               var country = null, countryCode = null, city = null, cityAlt = null;
+               var c, lc, component;
+               for (var r = 0, rl = results.length; r < rl; r += 1) {
+                   var result = results[r];
+   
+                   if (!city && result.types[0] === 'locality') {
+                       for (c = 0, lc = result.address_components.length; c < lc; c += 1) {
+                           component = result.address_components[c];
+   
+                           if (component.types[0] === 'locality') {
+                               city = component.long_name;
+                               break;
+                           }
+                       }
+                   }
+                   else if (!city && !cityAlt && result.types[0] === 'administrative_area_level_1') {
+                       for (c = 0, lc = result.address_components.length; c < lc; c += 1) {
+                           component = result.address_components[c];
+   
+                           if (component.types[0] === 'administrative_area_level_1') {
+                               cityAlt = component.long_name;
+                               break;
+                           }
+                       }
+                   } else if (!country && result.types[0] === 'country') {
+                       country = result.address_components[0].long_name;
+                       countryCode = result.address_components[0].short_name;
+                   }
+
+                   if (city && country) {
+                       break;
+                   }
+
+                   this.drugsService.getRegions()
+                   .subscribe(data => {
+                     this.filteredRegions = data;
+                     for(let i of this.filteredRegions){
+                      if(i.region == city){
+                        this.userReg_num = i.reg_num;
+                        this.userRegion = i.region;
+                      }
+                     }
+                   }, error => console.log(error));
+               }
+           }
+       }
+   });
+});
+
+}
 
 
 
@@ -119,12 +183,9 @@ test(searchRegion: string){
 
 
 
-
-
-
-
-
-
+compareItems(i1, i2) {
+  return i1 && i2 && i1.id===i2.id;
+}
 
   clearAltVariants(){
     this.drugs = [];
@@ -142,7 +203,7 @@ test(searchRegion: string){
     }, error => console.log(error));
   }
 
-  getTest(){
+  sortRegions(){
     this.drugsService.getRegions()
     .subscribe(data => {
       this.regions = data;
@@ -153,7 +214,7 @@ test(searchRegion: string){
       })
       console.log(data);
     }, error => console.log(error));
-
+    this.getCity();
   }
 
   naturalCompare(a, b) {
@@ -173,6 +234,7 @@ test(searchRegion: string){
  }
 
   findDrugs(drugName: string, region:number){
+    localStorage.setItem("regionValue", region.toString())
     this.router.navigate(['/drugs-page', drugName, region])
   }
 }

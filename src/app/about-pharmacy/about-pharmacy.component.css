@@ -1,6 +1,4 @@
-.navbar-brand{
-    margin-right: auto;
-}
+
 .column1{
     position: relative;
     left: 15%;
@@ -22,6 +20,14 @@ input{
     min-height: 50vh;
     height: 0;
 }
+
+nav div input{
+    width:100%;
+  }
+  nav div mat-select{
+   width: 100%;
+ }
+
 mat-card{
     height: 75%;
 }
@@ -32,6 +38,40 @@ mat-card{
     left: 44%;
     bottom:575px;
 }
+@media (max-width: 400px) {
+    nav div{
+      margin-top:5px;
+    }
+    nav div input{
+      width:100%;
+    }
+    nav div mat-select{
+     width: 100%;
+   }
+   nav div button{
+    width: 50%;
+  }
+   nav div button {
+     margin-left: 25%;
+   }
+  }
+  @media (max-width: 600px) {
+   nav div{
+     margin-top:5px;
+   }
+   nav div input{
+     width:100%;
+   }
+   nav div button{
+    width: 50%;
+  }
+   nav div mat-select{
+    width: 100%;
+  }
+  nav div button {
+    margin-left: 25%;
+  }
+  }
 .header{
     padding-top: 1%;
 }

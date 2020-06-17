@@ -144,7 +144,8 @@ test(searchRegion: string){
                    if (city && country) {
                        break;
                    }
-
+                   if (city != null && city!= undefined) {
+                    console.log(city)
                    this.drugsService.getRegions()
                    .subscribe(data => {
                      this.filteredRegions = data;
@@ -156,6 +157,7 @@ test(searchRegion: string){
                      }
                    }, error => console.log(error));
                }
+            }
            }
        }
    });
@@ -200,6 +202,8 @@ compareItems(i1, i2) {
     .subscribe(data => {
       this.drugs = data[0].class;
       console.log(this.drugs);
+      this.drugs = this.drugs.filter((elem, index, self) => self.findIndex(
+        (t) => {return (t.ls_name === elem.ls_name && t.ls_name === elem.ls_name)}) === index)
     }, error => console.log(error));
   }
 
@@ -234,6 +238,10 @@ compareItems(i1, i2) {
  }
 
   findDrugs(drugName: string, region:number){
+    if(drugName == "" || undefined) {
+      alert("Введите название препарата!");
+      return;
+    }
     localStorage.setItem("regionValue", region.toString())
     this.router.navigate(['/drugs-page', drugName, region])
   }

@@ -70,17 +70,16 @@
         <mat-list>
           <mat-list-item *ngFor="let pharmacy of pharmacys ">
             <div class="card" style="width: 21rem; height: 17rem;">
-              <div class="card-body">
+              <div class="card-body"  (click) = "aboutPharmacy(pharmacy.name)">
                 <h5 class="card-title">{{pharmacy.name}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{pharmacy.address}}</h6>
                 <p class="card-text">
                   Город: {{pharmacy.region}}<br>
                   Расстояние до вас: {{pharmacy.distanceBetweenUser}}<br>
-                  Цена на препарат: <span style="color: red">{{pharmacy.price_list[0].price}}</span><br>
-                  Остаток на складе: {{pharmacy.price_list[0].amount}}<br>
+                  Цена на препарат: <span style="color: red; font-weight: bold;">{{pharmacy.price_list[0].price}}</span><br>
+                  Остаток на складе: <span style="font-weight: bold;">{{pharmacy.price_list[0].amount}}</span><br>
                   <div *ngIf="pharmacy.is_24 == 0; else elseBlock"><span style="color: green">Работает 24/7</span></div> <ng-template #elseBlock><span style="color: red">Не работает 24/7<br></span></ng-template>
-                <button (click) = "aboutPharmacy(pharmacy.name)" type="button" class="btn btn-outline-primary">Выбрать</button>
-              </div>
+                   </div>
             </div>
           </mat-list-item>
         </mat-list>

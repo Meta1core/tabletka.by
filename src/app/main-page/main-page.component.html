@@ -61,13 +61,11 @@
               <div class="input-field second">
               <mat-form-field>
                 <label>РЕГИОН</label>
-                <mat-select #singleSelect [(value)] = "userReg_num" >
+                <mat-select #singleSelect >
                   <mat-option >
                     <ngx-mat-select-search  (keyup) = "test(ngx.value)" #ngx placeholderLabel="Поиск региона..." noEntriesFoundLabel="'не найдено'" [formControl]="bankFilterCtrl" ngxMatSelectSearchClear></ngx-mat-select-search>
                   </mat-option>
-                  <mat-select-trigger>
-                    {{userRegion}}
-                  </mat-select-trigger>
+                  <mat-option [value] = "userReg_num"><img width = "35" height = "35" src = "https://pngfon.ru/wp-content/gallery/geolokacziya-krasnyj/3.png">Ваш регион - {{userRegion}} </mat-option>
                   <mat-option #matSelect *ngFor="let region of regions"  [value]="region.reg_num"> {{region.region}} </mat-option>
                 </mat-select>
               </mat-form-field>

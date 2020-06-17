@@ -31,28 +31,42 @@
     <div class="list">
       <mat-list>
         <mat-list-item *ngFor="let drug of drugs ">
-          <!-- <div class = "drug-header" (click)="findPharmacy(drug.ls_num)"><h1>{{drug.ls_name}}</h1></div>
-          <div class ="drug-body" (click)="findPharmacy(drug.ls_num)">
-          <h3 mat-line>
-            {{drug.tar_name}}<br>
-            {{drug.nlec_name}}<br>
-            <p>Цена  -  <span class = "drug-price">{{drug.price_min}} - {{drug.price_max}}  р.</span></p><br>
 
-          </h3>
-          </div> -->
-          <div class="card border-info" style="width: 19rem; height: auto;">
-            <div class="card-body">
+          <div class ="mobile">
+          <div class="card border-info" style=" height: auto;">
+            <div class="card-body" (click) = "findPharmacy(drug.ls_num)">
               <h5 class="card-title">{{drug.ls_name}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{drug.tar_name}}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">
+                {{drug.nlec_name}}
+                {{drug.firm_name}}
+              </h6>
               <p class="card-text">
-                {{drug.nlec_name}}<br>
-                {{drug.firm_name}}<br>
-                {{drug.country_name}}<br>
-                Цена  -  <span class = "drug-price">{{drug.price_min}} - {{drug.price_max}}  р.</span>
+                {{drug.tar_name}}<br>
+                <span style = "font-weight: bold;">{{drug.country_name}}</span><br>
+                Цена  -  <span class  = "drug-price">{{drug.price_min}} - {{drug.price_max}}  р.</span>
               </p>
-              <button (click) = "findPharmacy(drug.ls_num)" type="button" class="btn btn-outline-primary">Выбрать</button>
             </div>
           </div>
+        </div>
+
+          <div class = "dekstop">
+            <div class="container">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-body" (click) = "findPharmacy(drug.ls_num)">
+                <div class="item">
+                  <div class = "ls_name">{{drug.ls_name}}</div>
+                  <div class = "nlec_name">{{drug.nlec_name}}</div>
+                  <div class = "tar_name">{{drug.tar_name}}</div>
+                  <div style= "padding-left: 10px">{{drug.firm_name}}<br><span style= "font-weight: bold;">{{drug.country_name}}</span ></div>
+                  <div class = "price">{{drug.price_min}} ... {{drug.price_max}}р.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+
         </mat-list-item>
       </mat-list>
     </div>

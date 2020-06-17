@@ -10,7 +10,10 @@ mat-checkbox, mat-label{
 }
 mat-list-item{
   display: inline-block;
-  padding: 10px;
+  height: auto;
+}
+.card-body{
+  cursor: pointer;
 }
  @media (min-width: 1299px) {
   mat-list-item{
@@ -61,6 +64,7 @@ nav div button {
 
 .card-body h5{
   font-size: 15px;
+  font-weight: bold;
 }
 
 .card-body h6{
@@ -68,7 +72,7 @@ nav div button {
 }
 
 .drug-price{
-
+  font-weight: bold;
   color:red;
   font-size: 15px;
 }

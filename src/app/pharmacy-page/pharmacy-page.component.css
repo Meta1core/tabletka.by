@@ -197,6 +197,9 @@ width: 200%;
   .mobile{
     display: none;
   }
+  #mat-slct{
+    margin-left: 35%;
+  }
 }
 @media (max-width: 1000px) {
   .list{

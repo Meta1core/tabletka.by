@@ -31,6 +31,10 @@ export class AboutPharmacyComponent implements OnInit {
 }
 
 findDrugs(drugName: string, region:number){
+  if(drugName == "" || undefined) {
+    alert("Введите название препарата!");
+    return;
+  }
   this.router.navigate(['/drugs-page', drugName, region])
 }
 

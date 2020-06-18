@@ -50,6 +50,7 @@ getInfoAboutPharmacy(){
   this.drugsService.aboutPharmacy(this.name, this.ls_num, this.region)
     .subscribe(data => {
       this.pharmacy = data;
+      this.pharmacy[0].phones = this.pharmacy[0].phones.substring(0, this.pharmacy[0].phones.length - 1);
       this.latitude = parseFloat(this.pharmacy[0].geo_y);
       this.longitude = parseFloat(this.pharmacy[0].geo_x);
     }, error => console.log(error));

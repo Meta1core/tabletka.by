@@ -38,6 +38,11 @@ mat-card{
     left: 44%;
     bottom:575px;
 }
+@media (min-width: 1200px) {
+  .column1{
+    margin-right: -250px;
+  }
+}
 @media (max-width: 400px) {
     nav div{
       margin-top:5px;

@@ -81,56 +81,8 @@ nav div button {
   height: 39px;
 }
 
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
-.search > div {
-display: inline-block;
-position: relative;
-}
-.search > div:after {
-content: "";
-background: white;
-width: 4px;
-height: 20px;
-position: absolute;
-top: 40px;
-right: 2px;
-transform: rotate(135deg);
-box-shadow: 1px 0 #0091c2;
-}
 
-.search > div > input {
-color: white;
-font-size: 16px;
-background: transparent;
-width: 25px;
-height: 25px;
-padding: 10px;
-border: solid 1px white;
-outline: none;
-border-radius: 35px;
-box-shadow: 0 1px #0091c2;
-transition: width 0.5s;
-}
-
-.search > div > input::placeholder {
-color: #efefef;
-opacity: 1;
-}
-
-.search > div > input::-ms-placeholder {
-color: #efefef;
-}
-
-.search > div > input::-ms-input-placeholder {
-color: #efefef;
-}
-
-.search > div > input:focus,
-.search > div > input:valid {
-width: 250px;
-}
-
-
+/* Карты */
 agm-map {
   position: relative;
   height: 100%;
@@ -164,3 +116,114 @@ width: 200%;
 .example-sidenav {
   padding: 20px;
 }
+
+
+
+/* Декстопная версия */
+.card {
+  width: 130%;
+  display: flex;
+  background: white;
+  margin: 0.1rem 0;
+  box-shadow: 0 0 9px gray;
+  transition: all 0.4s;
+}
+
+.card-title{
+  font-weight: bold;
+}
+
+.card:hover {
+  box-shadow: 0 0 16px 3px gray;
+}
+.card .card-image {
+  flex: 0 0 50%;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/551579/dandellion.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.card .card-content {
+  padding: 1rem;
+}
+
+@media (max-width: 450px) {
+  .card .card-content {
+    padding: 1rem;
+    width: 320px;
+  }
+}
+@media (min-width: 1200px) {
+  .card .card-content {
+    padding: 10px;
+  }
+  .border-info{
+    width: 65rem !important;
+    height: 11em !important;
+  }
+}
+
+
+/* Колонки в декстопной версии */
+.item {
+  display: grid;
+  grid-template-columns: 1fr repeat(5, 2fr);
+}
+.ls_name{
+  width: 200px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.nlec_name{
+  margin-left: 50px;
+}
+.tar_name{
+  width: 150px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.price{
+  width: 250px;
+  font-weight: bold;
+  font-size: 16pt;
+}
+.distanceBetweenUser{
+  width: 150px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+/* Адаптивность */
+@media (min-width: 1001px) {
+  .mobile{
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+  .dekstop{
+    display: none;
+  }
+}
+@media (min-width: 1000px) {
+  .list{
+    margin: 0 !important;
+    padding-right: 20% !important;
+  }
+  mat-list-item{
+    margin: 0.25em auto  !important;
+    margin-right: 110px !important;
+    vertical-align: top !important;
+    width: 100.3333% !important;
+  }
+ }
+ 
+ @media (min-width: 600px) {
+  mat-list-item{
+    margin: 0.25em auto;
+    margin-right: 200px;
+    vertical-align: top;
+    width: 20.3333%;
+  }
+   .border-info{
+    width: 19rem;
+  }
+ }

@@ -184,6 +184,7 @@ fillDistances(){
       lng: item.geo_x
   };
   item.distanceBetweenUser = (this.calculateDistance(this.usergeolocation, this.pharmacygeolocation));
+  console.log(this.pharmacys);
   }
 }
 
@@ -267,7 +268,6 @@ addMarker(lat: number, lng: number, label:string) {
     this.sorted_amount = false;
     this.drugsService.findPharmacy(this.ls_num, this.region)
     .subscribe(data => {
-      console.log(data);
       this.pharmacys = data;
       this.fillDistances()
       this.dataSource = new MatTableDataSource(this.pharmacys);

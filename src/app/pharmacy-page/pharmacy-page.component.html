@@ -69,6 +69,7 @@
       <div class="list">
         <mat-list>
           <mat-list-item *ngFor="let pharmacy of pharmacys ">
+            <div class = "mobile">
             <div class="card" style="width: 21rem; height: 17rem;">
               <div class="card-body"  (click) = "aboutPharmacy(pharmacy.name)">
                 <h5 class="card-title">{{pharmacy.name}}</h5>
@@ -81,6 +82,27 @@
                   <div *ngIf="pharmacy.is_24 == 0; else elseBlock"><span style="color: green">Работает 24/7</span></div> <ng-template #elseBlock><span style="color: red">Не работает 24/7<br></span></ng-template>
                    </div>
             </div>
+          </div>
+
+          <div class = "dekstop">
+            <div class="container">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-body" (click) = "aboutPharmacy(pharmacy.name)">
+                <div class="item">
+                  <div class = "ls_name">{{pharmacy.name}}</div>
+                  <div class = "nlec_name">{{pharmacy.address}}</div>
+                  <div class = "tar_name">{{pharmacy.region}}</div>
+                  <div class = "price" style= "padding-left: 10px">Остаток - {{pharmacy.price_list[0].amount}}<br><span style= "font-weight: bold;">Цена - {{pharmacy.price_list[0].price}}</span ></div>
+                  <div class = "distanceBetweenUser">{{pharmacy.distanceBetweenUser}}км от вас</div>
+                  <div  *ngIf="pharmacy.is_24 == 0; else elseBlock"><span style="color: green">Работает 24/7</span></div> <ng-template #elseBlock><span style="color: red">Не работает 24/7<br></span></ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+
           </mat-list-item>
         </mat-list>
       </div>

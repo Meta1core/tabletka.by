@@ -157,6 +157,9 @@ sortAmount(){
         this.pharmacys.push(item);
       }
     }
+    for(let i of this.pharmacys){
+      i.price_list[0].amount = Number(i.price_list[0].amount);
+     }
     this.fillDistances()
     this.dataSource = new MatTableDataSource(this.pharmacys);
     this.dataSource.sort = this.sort;

@@ -33,7 +33,7 @@
         <mat-list-item *ngFor="let drug of drugs ">
 
           <div class ="mobile">
-          <div class="card border-info" style="width: 17rem; height: 12rem;">
+          <div class="card border-info" style="width: 17rem; height: 13rem;">
             <div class="card-body" (click) = "findPharmacy(drug.ls_num)">
               <h5 class="card-title">{{drug.ls_name}}</h5>
               <h6 class="card-subtitle mb-2 text-muted">
@@ -43,6 +43,7 @@
               <p class="card-text">
                 {{drug.tar_name}}<br>
                 <span style = "font-weight: bold;">{{drug.country_name}}</span><br>
+                <br>
                 Цена  -  <span class  = "drug-price">{{drug.price_min}} - {{drug.price_max}}  р.</span>
               </p>
             </div>

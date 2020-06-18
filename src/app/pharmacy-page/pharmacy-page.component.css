@@ -199,6 +199,9 @@ width: 200%;
   }
 }
 @media (max-width: 1000px) {
+  .list{
+    margin-left: 5%;
+  }
   .dekstop{
     display: none;
   }

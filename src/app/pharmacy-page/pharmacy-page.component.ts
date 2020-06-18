@@ -269,6 +269,9 @@ addMarker(lat: number, lng: number, label:string) {
     this.drugsService.findPharmacy(this.ls_num, this.region)
     .subscribe(data => {
       this.pharmacys = data;
+      for(let i of this.pharmacys){
+       i.price_list[0].amount = Number(i.price_list[0].amount);
+      }
       this.fillDistances()
       this.dataSource = new MatTableDataSource(this.pharmacys);
       this.dataSource.sort = this.sort;

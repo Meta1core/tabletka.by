@@ -150,6 +150,9 @@
   }
 }
 @media (max-width: 1000px) {
+  .list{
+    margin-left: 9%;
+  }
   .dekstop{
     display: none;
   }

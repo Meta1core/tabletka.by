@@ -4,6 +4,9 @@
     left: 15%;
     top: 18%;
 }
+li{
+  cursor: pointer;
+}
 .column2{
     position: relative;
     bottom: 260px;
@@ -35,7 +38,7 @@ mat-card{
     position: relative;
     height: 110%;
     width: 45%;
-    left: 44%;
+    left: 48%;
     bottom:575px;
 }
 @media (min-width: 1200px) {

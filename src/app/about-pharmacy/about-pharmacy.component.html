@@ -6,10 +6,13 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item ">
-        <a class="nav-link" href="#">Главная страница</a>
+        <a class="nav-link" href="#">Главная</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link"  >Список лекарств</a>
+      <li class="nav-item ">
+        <a class="nav-link"  >Лекарства</a>
+      </li>
+      <li class="nav-item active" >
+        <a class="nav-link " (click) = "returnBack()"  >Вернуться назад</a>
       </li>
     </ul>
     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
@@ -30,7 +33,7 @@
   <h1 align = "center" *ngIf="(pharmacy[0].is_open == 1); else elseBlock"> Страница аптеки: "{{name }}"  <span
     class="badge badge-success"> Аптека открыта</span></h1>
 <ng-template #elseBlock>
-<h1 align = "center">Страница аптеки: "{{name }}"<span class="badge badge-danger"> Аптека закрыта</span></h1>
+<h1 align = "center">{{name }}<span class="badge badge-danger"> Аптека закрыта</span></h1>
 </ng-template>
 </div>
 
@@ -49,7 +52,7 @@
       </mat-form-field>
     </div>
     <div>
-      <span>Мобильный телефон:</span><a [href]="'tel:' + pharmacy[0].phones"> {{pharmacy[0].phones}}</a>
+      <span>Мобильный телефон:</span><br><a [href]="'tel:' + pharmacy[0].phones"> {{pharmacy[0].phones}}</a>
     </div>
     <div>
       <mat-form-field class="example-full-width" id = "graph">

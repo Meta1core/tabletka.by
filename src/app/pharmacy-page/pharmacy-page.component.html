@@ -6,13 +6,13 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item ">
-          <a class="nav-link" href="#">Главная страница</a>
+          <a class="nav-link" href="#">Главная</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  >Список лекарств</a>
+          <a class="nav-link"  >Лекарства</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link"  >Список аптек<span class="sr-only">(current)</span></a>
+          <a class="nav-link"  >Аптеки<span class="sr-only">(current)</span></a>
         </li>
         
       </ul>
@@ -64,7 +64,8 @@
         <mat-option (click) = "sortByPrice()" value="option2">Сортировка по цене</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-checkbox (click) = "sortAmount()" class="checkBox" [(ngModel)]="checked">Убрать аптеки, где препарата нет</mat-checkbox>
+    <mat-checkbox (click) = "sortAmount()" class="checkBox" [(ngModel)]="checked">Убрать неизвестные остатки</mat-checkbox>
+    <mat-checkbox (click) = "sortPharmacy()" class="checkBox" [(ngModel)]="checked2">Убрать гос. аптеки</mat-checkbox>
     <mat-card-content>
       <div class="list">
         <mat-list>
@@ -76,9 +77,9 @@
                 <h6 class="card-subtitle mb-2 text-muted" style="font-weight: bold;">{{pharmacy.address}}</h6>
                 <p class="card-text">
                   Город: {{pharmacy.region}}<br>
-                  Расстояние до вас: {{pharmacy.distanceBetweenUser}}<br>
-                  <span style="font-weight: bold;">Цена на препарат: </span> <span style="color: red; font-weight: bold;">{{pharmacy.price_list[0].price}}</span><br>
-                  <span style="font-weight: bold;">Остаток на складе: </span><span style="font-weight: bold;">{{pharmacy.price_list[0].amount}}</span><br>
+                  Телефон: {{pharmacy.phones}}<br>
+                  Расстояние до вас: <div *ngIf="pharmacy.distanceBetweenUser == 0; else elseBlockkk"><span >Укажите ваше местоположение</span></div> <ng-template #elseBlockkk><span>{{pharmacy.distanceBetweenUser}} км до вас<br></span></ng-template>
+                  <span style="font-weight: bold;">Остаток на складе: </span><div  *ngIf="pharmacy.price_list[0].amount == 0; else elseBlockk"><span>Уточняйте</span></div> <ng-template #elseBlockk><span>{{pharmacy.price_list[0].amount}}<br></span></ng-template><span style= "font-weight: bold;">Цена - {{pharmacy.price_list[0].price}}</span ><br>
                   <div *ngIf="pharmacy.is_24 == 0; else elseBlock"><span style="color: green">Работает 24/7</span></div> <ng-template #elseBlock><span style="color: red">Не работает 24/7<br></span></ng-template>
                    </div>
             </div>
@@ -92,9 +93,9 @@
                 <div class="item">
                   <div class = "ls_name">{{pharmacy.name}}</div>
                   <div class = "nlec_name">{{pharmacy.address}}</div>
-                  <div class = "tar_name">{{pharmacy.region}}</div>
-                  <div class = "price" style= "padding-left: 10px">Остаток - {{pharmacy.price_list[0].amount}}<br><span style= "font-weight: bold;">Цена - {{pharmacy.price_list[0].price}}</span ></div>
-                  <div class = "distanceBetweenUser">{{pharmacy.distanceBetweenUser}}км от вас</div>
+                  <div class = "tar_name">{{pharmacy.phones}}</div>
+                  <div class = "price" style= "padding-left: 10px">Остаток - <div  *ngIf="pharmacy.price_list[0].amount == 0; else elseBlockk"><span>Уточняйте</span></div> <ng-template #elseBlockk><span>{{pharmacy.price_list[0].amount}}<br></span></ng-template><span style= "font-weight: bold;">Цена - {{pharmacy.price_list[0].price}}</span ></div>
+                  <div class = "distanceBetweenUser" *ngIf="pharmacy.distanceBetweenUser == 0; else elseBlockkk"><span >Укажите ваше местоположение</span></div> <ng-template #elseBlockkk><span>{{pharmacy.distanceBetweenUser}} км до вас<br></span></ng-template>
                   <div  *ngIf="pharmacy.is_24 == 0; else elseBlock"><span style="color: green">Работает 24/7</span></div> <ng-template #elseBlock><span style="color: red">Не работает 24/7<br></span></ng-template>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DrugsService } from '../drugs.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-about-pharmacy',
   templateUrl: './about-pharmacy.component.html',
@@ -17,7 +18,7 @@ export class AboutPharmacyComponent implements OnInit {
   longitude: number;
   regions:Array<any>;
   mapType: "satelite";
-  constructor(private drugsService: DrugsService,  public route: ActivatedRoute, public router: Router) { }
+  constructor(private drugsService: DrugsService,  private _location: Location, public route: ActivatedRoute, public router: Router) { }
 
   ngOnInit(): void {
     this.regionValue = localStorage.getItem("regionValue");
@@ -46,6 +47,9 @@ fillSelect(){
   }, error => console.log(error));
 }
 
+returnBack(){
+  this._location.back();
+}
 getInfoAboutPharmacy(){
   this.drugsService.aboutPharmacy(this.name, this.ls_num, this.region)
     .subscribe(data => {

@@ -27,6 +27,7 @@ export interface PeriodicElement {
 })
 export class PharmacyPageComponent implements OnInit {
   checked = false;
+  checked2 = false;
 
   location: Location;
   selectedMarker: Marker;
@@ -42,6 +43,7 @@ export class PharmacyPageComponent implements OnInit {
   regions:Array<any>;
   pharmacys:Array<any>;
   sorted_amount: boolean = false;
+  sorted_gospharmacy: boolean = false;
   distances:Array<any> = [];
   dataSource;
   regionNumber;
@@ -85,6 +87,7 @@ export class PharmacyPageComponent implements OnInit {
   });
   this.drugsService.findPharmacy(this.ls_num, this.region)
   .subscribe(data => {
+    console.log(data);
     if(this.region == 0) {
       this.x = 27.3576187;
       this.y = 53.4184231;
@@ -140,6 +143,56 @@ sortByUserMark(lat: number, lng: number, label:string){
   this.sortByCoords();
 }
 
+sortPharmacy(){
+  if(this.checked2 == false){
+    if(this.sorted_gospharmacy == false){
+    this.drugsService.findPharmacy(this.ls_num, this.region)
+    .subscribe(data => {
+      this.sorted_gospharmacy = true;
+      this.pharmacys = [];
+      if(this.checked == true){
+        for(let item of data){
+          if(item.price_list[0].amount == '0' || String(item.name).includes("Фармация") || String(item.name).includes("фармация") ){
+          }
+          else if(item.price_list[0].amount == '0.000' || String(item.name).includes("Фармация") || String(item.name).includes("фармация") ){
+            
+          }
+          else {
+            this.pharmacys.push(item);
+          }
+        }
+        for(let i of this.pharmacys){
+          i.price_list[0].amount = Number(i.price_list[0].amount);
+         }
+      }
+      else {
+      for(let item of data){
+        if(String(item.name).includes("Фармация") ){
+          
+        }
+        else if(String(item.name).includes("фармация")){
+          
+        }
+        else {
+          this.pharmacys.push(item);
+        }
+      }
+    }
+      this.fillDistances()
+      this.dataSource = new MatTableDataSource(this.pharmacys);
+      this.dataSource.sort = this.sort;
+      for(let item of data) {
+        this.addMarker(item.geo_y, item.geo_x, item.apt_id);
+       }
+    }, error => console.log(error)); }
+    else{
+      this.findPharmacys();
+    }
+  }
+  else{
+    this.findPharmacys();
+  }
+}
 sortAmount(){
   if(this.checked == false){
   if(this.sorted_amount == false){
@@ -147,6 +200,22 @@ sortAmount(){
   .subscribe(data => {
     this.sorted_amount = true;
     this.pharmacys = [];
+    if(this.checked2 == true){
+      for(let item of data){
+        if(item.price_list[0].amount == '0' || String(item.name).includes("Фармация") || String(item.name).includes("фармация") ){
+        }
+        else if(item.price_list[0].amount == '0.000' || String(item.name).includes("Фармация") || String(item.name).includes("фармация") ){
+          
+        }
+        else {
+          this.pharmacys.push(item);
+        }
+      }
+      for(let i of this.pharmacys){
+        i.price_list[0].amount = Number(i.price_list[0].amount);
+       }
+    }
+    else {
     for(let item of data){
       if(item.price_list[0].amount == '0' ){
       }
@@ -157,9 +226,11 @@ sortAmount(){
         this.pharmacys.push(item);
       }
     }
+  }
     for(let i of this.pharmacys){
       i.price_list[0].amount = Number(i.price_list[0].amount);
      }
+
     this.fillDistances()
     this.dataSource = new MatTableDataSource(this.pharmacys);
     this.dataSource.sort = this.sort;
@@ -175,7 +246,7 @@ else{
   this.findPharmacys();
 }
 }
-  
+
 fillDistances(){
   for(let item of this.pharmacys){
     this.usergeolocation = { 
@@ -187,7 +258,9 @@ fillDistances(){
       lng: item.geo_x
   };
   item.distanceBetweenUser = (this.calculateDistance(this.usergeolocation, this.pharmacygeolocation));
-  console.log(this.pharmacys);
+  if(item.distanceBetweenUser == 'NaN'){
+    item.distanceBetweenUser = 0;
+  }
   }
 }
 

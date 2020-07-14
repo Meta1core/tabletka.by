@@ -187,7 +187,7 @@ width: 200%;
 .price{
   width: 250px;
   font-weight: bold;
-  font-size: 16pt;
+  font-size: 13pt;
 }
 .distanceBetweenUser{
   width: 150px;
@@ -206,7 +206,7 @@ width: 200%;
 }
 @media (max-width: 1000px) {
   .list{
-    margin-left: 5%;
+    margin-left: 2%;
   }
   .dekstop{
     display: none;
@@ -220,7 +220,7 @@ width: 200%;
 @media (min-width: 1000px) {
   .list{
     margin: 0 !important;
-    padding-right: 20% !important;
+    padding-right: 5% !important;
   }
   mat-list-item{
     margin: 0.25em auto  !important;

@@ -51,7 +51,7 @@
             <div class="input-wrap first">
               <div class="input-field first" >
                 <label>НАЗВАНИЕ ПРЕПАРАТА</label>
-                <input (keyup) = "fillDrugs(searchField.value)" #searchField type="text" placeholder="например: аспирин, уголь, витамины, и тд..." />
+                <input (keyup) = "fillDrugs(searchField.value)" (keyup.enter)="findDrugs(searchField.value, singleSelect.value)" #searchField type="text" placeholder="например: аспирин, уголь, витамины, и тд..." />
                   <div class = "alt_variants" (click) = "setSearchedDrug(drug.ls_name)" *ngFor="let drug of drugs | slice:0:7; let i=index">
                     <div  class = "alt_child">{{drug.ls_name}}</div>
                   </div>
@@ -63,7 +63,7 @@
                 <label>РЕГИОН</label>
                 <mat-select #singleSelect >
                   <mat-option >
-                    <ngx-mat-select-search  (keyup) = "test(ngx.value)" #ngx placeholderLabel="Поиск региона..." noEntriesFoundLabel="'не найдено'" [formControl]="bankFilterCtrl" ngxMatSelectSearchClear></ngx-mat-select-search>
+                    <ngx-mat-select-search  (keyup) = "fillDrugs(searchField.value)" (keyup.enter)="findDrugs(searchField.value, singleSelect.value)" (keyup) = "test(ngx.value)" #ngx placeholderLabel="Поиск региона..." noEntriesFoundLabel="'не найдено'" [formControl]="bankFilterCtrl" ngxMatSelectSearchClear></ngx-mat-select-search>
                   </mat-option>
                   <mat-option [value] = "userReg_num"><img width = "35" height = "35" src = "https://pngfon.ru/wp-content/gallery/geolokacziya-krasnyj/3.png">Ваш регион - {{userRegion}} </mat-option>
                   <mat-option #matSelect *ngFor="let region of regions"  [value]="region.reg_num"> {{region.region}} </mat-option>

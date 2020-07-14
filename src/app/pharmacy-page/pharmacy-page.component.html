@@ -17,10 +17,10 @@
         
       </ul>
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <input #drugInput type="text" (click) = "fillSelect()" class="form-control search-slt" placeholder="Введите препарат...">
+        <input (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #drugInput type="text" (click) = "fillSelect()" class="form-control search-slt" placeholder="Введите препарат...">
       </div>
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <mat-select #regionSelector (click) = "fillSelect()" class="form-control search-slt" id="exampleFormControlSelect1" [value] = "regionNumber">
+        <mat-select (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #regionSelector (click) = "fillSelect()" class="form-control search-slt" id="exampleFormControlSelect1" [value] = "regionNumber">
           <mat-option *ngFor="let region of regions" value={{region.reg_num}}> {{region.region}} </mat-option>
         </mat-select>
       </div>
@@ -71,15 +71,14 @@
         <mat-list>
           <mat-list-item *ngFor="let pharmacy of pharmacys ">
             <div class = "mobile">
-            <div class="card" style="width: 21rem; height: 17rem;">
+            <div class="card" style="width: 21rem; height: 15rem;">
               <div class="card-body"  (click) = "aboutPharmacy(pharmacy.name)">
                 <h5 class="card-title">{{pharmacy.name}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted" style="font-weight: bold;">{{pharmacy.address}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted" style="font-weight: bold;">{{pharmacy.region}}, {{pharmacy.address}}</h6>
                 <p class="card-text">
-                  Город: {{pharmacy.region}}<br>
                   Телефон: {{pharmacy.phones}}<br>
-                  Расстояние до вас: <div *ngIf="pharmacy.distanceBetweenUser == 0; else elseBlockkk"><span >Укажите ваше местоположение</span></div> <ng-template #elseBlockkk><span>{{pharmacy.distanceBetweenUser}} км до вас<br></span></ng-template>
-                  <span style="font-weight: bold;">Остаток на складе: </span><div  *ngIf="pharmacy.price_list[0].amount == 0; else elseBlockk"><span>Уточняйте</span></div> <ng-template #elseBlockk><span>{{pharmacy.price_list[0].amount}}<br></span></ng-template><span style= "font-weight: bold;">Цена - {{pharmacy.price_list[0].price}}</span ><br>
+                  Расстояние до вас: <span *ngIf="pharmacy.distanceBetweenUser == 0; else elseBlockkk"><span >Укажите ваше местоположение</span></span> <ng-template #elseBlockkk><span>{{pharmacy.distanceBetweenUser}} км до вас<br></span></ng-template>
+                  <span style="font-weight: bold;">Остаток на складе: </span><span  *ngIf="pharmacy.price_list[0].amount == 0; else elseBlockk"><span>Уточняйте</span></span> <ng-template #elseBlockk><span>{{pharmacy.price_list[0].amount}}<br></span></ng-template><br><span style= "font-weight: bold;">Цена - {{pharmacy.price_list[0].price}}</span ><br>
                   <div *ngIf="pharmacy.is_24 == 0; else elseBlock"><span style="color: green">Работает 24/7</span></div> <ng-template #elseBlock><span style="color: red">Не работает 24/7<br></span></ng-template>
                    </div>
             </div>
@@ -92,7 +91,7 @@
               <div class="card-body" (click) = "aboutPharmacy(pharmacy.name)">
                 <div class="item">
                   <div class = "ls_name">{{pharmacy.name}}</div>
-                  <div class = "nlec_name">{{pharmacy.address}}</div>
+                  <div class = "nlec_name">{{pharmacy.region}}, {{pharmacy.address}}</div>
                   <div class = "tar_name">{{pharmacy.phones}}</div>
                   <div class = "price" style= "padding-left: 10px">Остаток - <div  *ngIf="pharmacy.price_list[0].amount == 0; else elseBlockk"><span>Уточняйте</span></div> <ng-template #elseBlockk><span>{{pharmacy.price_list[0].amount}}<br></span></ng-template><span style= "font-weight: bold;">Цена - {{pharmacy.price_list[0].price}}</span ></div>
                   <div class = "distanceBetweenUser" *ngIf="pharmacy.distanceBetweenUser == 0; else elseBlockkk"><span >Укажите ваше местоположение</span></div> <ng-template #elseBlockkk><span>{{pharmacy.distanceBetweenUser}} км до вас<br></span></ng-template>

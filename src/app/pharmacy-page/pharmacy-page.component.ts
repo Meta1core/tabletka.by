@@ -347,6 +347,7 @@ addMarker(lat: number, lng: number, label:string) {
       this.pharmacys = data;
       for(let i of this.pharmacys){
        i.price_list[0].amount = Number(i.price_list[0].amount);
+       i.phones = i.phones.substring(0, i.phones.length - 1);
       }
       this.fillDistances()
       this.dataSource = new MatTableDataSource(this.pharmacys);
@@ -354,6 +355,7 @@ addMarker(lat: number, lng: number, label:string) {
       for(let item of data) {
         this.addMarker(item.geo_y, item.geo_x, item.apt_id);
        }
+       
     }, error => console.log(error));
   }
 

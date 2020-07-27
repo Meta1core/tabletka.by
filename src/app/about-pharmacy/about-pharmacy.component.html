@@ -16,7 +16,7 @@
       </li>
     </ul>
     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-      <input (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #drugInput type="text" (click) = "fillSelect()" class="form-control search-slt" placeholder="Введите препарат...">
+      <input (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #drugInput type="text" [value] = "drugName" (click) = "fillSelect()" class="form-control search-slt" placeholder="Введите препарат...">
     </div>
     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
       <mat-select (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #regionSelector (click) = "fillSelect()" class="form-control search-slt" id="exampleFormControlSelect1" [value] = "regionValue">

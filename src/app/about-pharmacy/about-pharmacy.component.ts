@@ -10,6 +10,7 @@ import {Location} from '@angular/common';
 export class AboutPharmacyComponent implements OnInit {
   ls_num;
   region;
+  drugName;
   regionValue;
   name;
   pharmacy:Array<any>;
@@ -29,6 +30,10 @@ export class AboutPharmacyComponent implements OnInit {
       console.clear();
       this.getInfoAboutPharmacy();
   });
+  this.fillSelect();
+  this.drugName = localStorage.getItem("drugName");
+}
+findTime(){
 }
 
 findDrugs(drugName: string, region:number){
@@ -45,6 +50,7 @@ fillSelect(){
     this.regions = data;
     console.log(data);
   }, error => console.log(error));
+
 }
 
 returnBack(){
@@ -57,8 +63,10 @@ getInfoAboutPharmacy(){
       this.pharmacy[0].phones = this.pharmacy[0].phones.substring(0, this.pharmacy[0].phones.length - 1);
       this.latitude = parseFloat(this.pharmacy[0].geo_y);
       this.longitude = parseFloat(this.pharmacy[0].geo_x);
+      if(this.pharmacy[0].work6 == "1000-1000") this.pharmacy[0].work6 = "Выходной";
+      if(this.pharmacy[0].work7 == "1000-1000") this.pharmacy[0].work7 = "Выходной";
+      console.log(this.pharmacy)
     }, error => console.log(error));
-    console.log(this.latitude);
     console.log(this.longitude);
 }
 }

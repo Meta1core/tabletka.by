@@ -243,6 +243,7 @@ compareItems(i1, i2) {
       return;
     }
     localStorage.setItem("regionValue", region.toString())
+    localStorage.setItem("drugName", drugName.toString())
     this.router.navigate(['/drugs-page', drugName, region])
   }
 }

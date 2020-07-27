@@ -79,7 +79,7 @@
                   Телефон: {{pharmacy.phones}}<br>
                   Расстояние до вас: <span *ngIf="pharmacy.distanceBetweenUser == 0; else elseBlockkk"><span >Укажите ваше местоположение</span></span> <ng-template #elseBlockkk><span>{{pharmacy.distanceBetweenUser}} км до вас<br></span></ng-template>
                   <span style="font-weight: bold;">Остаток на складе: </span><span  *ngIf="pharmacy.price_list[0].amount == 0; else elseBlockk"><span>Уточняйте</span></span> <ng-template #elseBlockk><span>{{pharmacy.price_list[0].amount}}<br></span></ng-template><br><span style= "font-weight: bold;">Цена - {{pharmacy.price_list[0].price}}</span ><br>
-                  <div *ngIf="pharmacy.is_24 == 0; else elseBlock"><span style="color: green">Работает 24/7</span></div> <ng-template #elseBlock><span style="color: red">Не работает 24/7<br></span></ng-template>
+                    <div  *ngIf="pharmacy.is_open == 1; else elseBlockk"><span style="color: green">Работает cейчас</span></div> <ng-template *ngIf="pharmacy.is_open == 3" #elseBlockk><span style="color: red">До закрытия меньше 30 минут<br></span></ng-template>
                    </div>
             </div>
           </div>
@@ -95,7 +95,7 @@
                   <div class = "tar_name">{{pharmacy.phones}}</div>
                   <div class = "price" style= "padding-left: 10px">Остаток - <div  *ngIf="pharmacy.price_list[0].amount == 0; else elseBlockk"><span>Уточняйте</span></div> <ng-template #elseBlockk><span>{{pharmacy.price_list[0].amount}}<br></span></ng-template><span style= "font-weight: bold;">Цена - {{pharmacy.price_list[0].price}}</span ></div>
                   <div class = "distanceBetweenUser" *ngIf="pharmacy.distanceBetweenUser == 0; else elseBlockkk"><span >Укажите ваше местоположение</span></div> <ng-template #elseBlockkk><span>{{pharmacy.distanceBetweenUser}} км до вас<br></span></ng-template>
-                  <div  *ngIf="pharmacy.is_24 == 0; else elseBlock"><span style="color: green">Работает 24/7</span></div> <ng-template #elseBlock><span style="color: red">Не работает 24/7<br></span></ng-template>
+                  <div  *ngIf="pharmacy.is_open == 1; else elseBlock"><span style="color: green">Работает cейчас</span></div> <ng-template  #elseBlock><span   *ngIf="pharmacy.is_open == 3; else elseBlockkk" style="color: red">До закрытия меньше 30 минут<br></span><ng-template  #elseBlockkk><span  style="color: red">Закрыто</span></ng-template></ng-template>
                 </div>
               </div>
             </div>

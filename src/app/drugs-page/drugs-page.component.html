@@ -13,10 +13,10 @@
         </li>
       </ul>
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <input #drugInput type="text" (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" (click) = "fillSelect()" class="form-control search-slt" placeholder="Введите препарат...">
+        <input #drugInput type="text" [value] = "drugName" (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" (click) = "fillSelect()" class="form-control search-slt" placeholder="Введите препарат...">
       </div>
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <mat-select (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #regionSelector (click) = "fillSelect()" class="form-control search-slt"  [value] = "regionNumber">
+        <mat-select (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #regionSelector (click) = "fillSelect()" class="form-control search-slt"  [value] = "regionValue">
           <mat-option *ngFor="let region of regions" value={{region.reg_num}}> {{region.region}} </mat-option>
         </mat-select>
       </div>

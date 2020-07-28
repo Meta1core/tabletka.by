@@ -201,6 +201,9 @@ width: 200%;
   .mobile{
     display: none;
   }
+  #infoDrug{
+    margin-left: 40%;
+  }
   #mat-slct{
     margin-left: 35%;
   }
@@ -208,6 +211,9 @@ width: 200%;
 @media (max-width: 1000px) {
   .list{
     margin-left: 2%;
+  }
+  #infoDrug{
+    margin-left: 5%;
   }
   .dekstop{
     display: none;
@@ -220,7 +226,7 @@ width: 200%;
 }
 @media (min-width: 1200px) and (max-width: 1400px){
   .card{
-    width: 105%;
+    width: 110%;
   }
 }
 @media (min-width: 1000px) {

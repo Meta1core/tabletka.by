@@ -14,6 +14,7 @@ export class DrugsPageComponent implements OnInit {
   regionNumber;
   regions:Array<any>;
   region;
+  regionValue;
   drugs:Array<any>;
   dataSource = new MatTableDataSource(this.drugs);
   constructor(private drugsService: DrugsService,  public route: ActivatedRoute, public router: Router) { }
@@ -23,7 +24,11 @@ export class DrugsPageComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   ngOnInit(): void {
+    this.regionValue = localStorage.getItem("regionValue");
+    this.drugName = localStorage.getItem("drugName");
+    this.fillSelect();
     this.route.paramMap.subscribe(params => {
+      
        this.drugName = params.get('drugName');
        this.region = params.get('region');
        console.clear();
@@ -47,7 +52,13 @@ export class DrugsPageComponent implements OnInit {
   }
   findPharmacy(ls_num:number){
     this.router.navigate(['/pharmacy-page', ls_num, this.region]);
+    for(let item of this.drugs){
+      if (item.ls_num == ls_num){
+        var infoDrug = item.ls_name + " " + item.tar_name;
+        localStorage.setItem("infoDrug", infoDrug);
+      }
   }
+}
 
   fillSelect(){
     this.drugsService.getRegions()

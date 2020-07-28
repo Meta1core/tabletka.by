@@ -46,11 +46,12 @@ export class PharmacyPageComponent implements OnInit {
   sorted_gospharmacy: boolean = false;
   distances:Array<any> = [];
   dataSource;
-  regionNumber;
+  regionValue;
+  drugName;
   myImage = "./assets/pictures/gmap.jpg";
   closeResult = '';
   mapType: "satelite";
-  
+  infoDrug;
   x:number;
   y:number;
   constructor( private drugsService: DrugsService,  public route: ActivatedRoute, public router: Router, private modalService: NgbModal) { }
@@ -61,7 +62,10 @@ export class PharmacyPageComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   ngOnInit(): void {
-    this.regionNumber = localStorage.getItem("regionValue");
+    this.regionValue = localStorage.getItem("regionValue");
+    this.drugName = localStorage.getItem("drugName");
+    this.infoDrug = localStorage.getItem("infoDrug");
+    this.fillSelect();
     console.clear();
     this.selectedMarker = {
       lat: 53.4184231,

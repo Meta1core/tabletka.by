@@ -17,10 +17,10 @@
         
       </ul>
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <input (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #drugInput type="text" (click) = "fillSelect()" class="form-control search-slt" placeholder="Введите препарат...">
+        <input (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #drugInput type="text" (click) = "fillSelect()" [value] = "drugName" class="form-control search-slt" placeholder="Введите препарат...">
       </div>
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <mat-select (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #regionSelector (click) = "fillSelect()" class="form-control search-slt" id="exampleFormControlSelect1" [value] = "regionNumber">
+        <mat-select (keyup.enter) = "findDrugs(drugInput.value, regionSelector.value)" #regionSelector (click) = "fillSelect()" class="form-control search-slt" id="exampleFormControlSelect1" [value] = "regionValue">
           <mat-option *ngFor="let region of regions" value={{region.reg_num}}> {{region.region}} </mat-option>
         </mat-select>
       </div>
@@ -66,12 +66,13 @@
     </mat-form-field>
     <mat-checkbox (click) = "sortAmount()" class="checkBox" [(ngModel)]="checked">Убрать неизвестные остатки</mat-checkbox>
     <mat-checkbox (click) = "sortPharmacy()" class="checkBox" [(ngModel)]="checked2">Убрать гос. аптеки</mat-checkbox>
+    <h1 id = "infoDrug" style="color: white;">{{infoDrug}}</h1>
     <mat-card-content>
       <div class="list">
         <mat-list>
           <mat-list-item *ngFor="let pharmacy of pharmacys ">
             <div class = "mobile">
-            <div class="card" style="width: 21rem; height: 15rem;">
+            <div class="card" style="width: 21rem; height: 17rem;">
               <div class="card-body"  (click) = "aboutPharmacy(pharmacy.name)">
                 <h5 class="card-title">{{pharmacy.name}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted" style="font-weight: bold;">{{pharmacy.region}}, {{pharmacy.address}}</h6>
@@ -79,8 +80,8 @@
                   Телефон: {{pharmacy.phones}}<br>
                   Расстояние до вас: <span *ngIf="pharmacy.distanceBetweenUser == 0; else elseBlockkk"><span >Укажите ваше местоположение</span></span> <ng-template #elseBlockkk><span>{{pharmacy.distanceBetweenUser}} км до вас<br></span></ng-template>
                   <span style="font-weight: bold;">Остаток на складе: </span><span  *ngIf="pharmacy.price_list[0].amount == 0; else elseBlockk"><span>Уточняйте</span></span> <ng-template #elseBlockk><span>{{pharmacy.price_list[0].amount}}<br></span></ng-template><br><span style= "font-weight: bold;">Цена - {{pharmacy.price_list[0].price}}</span ><br>
-                    <div  *ngIf="pharmacy.is_open == 1; else elseBlockk"><span style="color: green">Работает cейчас</span></div> <ng-template *ngIf="pharmacy.is_open == 3" #elseBlockk><span style="color: red">До закрытия меньше 30 минут<br></span></ng-template>
-                   </div>
+                    <div  *ngIf="pharmacy.is_open == 1; else elseBlock"><span style="color: green">Работает cейчас</span></div> <ng-template  #elseBlock><span   *ngIf="pharmacy.is_open == 3; else elseBlockkk" style="color: red">До закрытия меньше 30 минут<br></span><ng-template  #elseBlockkk><span  style="color: red">Закрыто</span></ng-template></ng-template>
+                  </div>
             </div>
           </div>
 

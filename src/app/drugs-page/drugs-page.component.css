@@ -158,6 +158,11 @@
     display: none;
   }
 }
+@media (min-width: 1200px) and (max-width: 1400px){
+  .card{
+    width: 123%;
+  }
+}
 @media (min-width: 1000px) {
   .list{
     margin: 0 !important;

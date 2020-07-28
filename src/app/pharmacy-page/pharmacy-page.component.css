@@ -213,9 +213,14 @@ width: 200%;
     display: none;
   }
 }
-@media (min-width: 1265px) and (max-width: 1700px){
+@media (min-width: 1400px) and (max-width: 1700px){
   .card{
     width: 115%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1400px){
+  .card{
+    width: 105%;
   }
 }
 @media (min-width: 1000px) {

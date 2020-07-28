@@ -33,6 +33,7 @@ nav div input{
 
 mat-card{
     height: 75%;
+    overflow: hidden;
 }
     agm-map {
     position: relative;
